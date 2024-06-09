@@ -1,4 +1,4 @@
-package Homework14;
+package Homework14_1;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FormSubmissionTest {
+public class ElementVisibilityTest {
     WebDriver driver;
 
     @BeforeEach
@@ -19,15 +19,10 @@ public class FormSubmissionTest {
     }
 
     @Test
-    public void testFormSubmission() {
+    public void testElementVisibility() {
         driver.get("https://demoqa.com/automation-practice-form");
-        driver.findElement(By.id("firstName")).sendKeys("John");
-        driver.findElement(By.id("lastName")).sendKeys("Doe");
-        driver.findElement(By.id("userEmail")).sendKeys("john.doe@example.com");
-        driver.findElement(By.id("submit")).click();
-
-        WebElement confirmationMessage = driver.findElement(By.id("example-modal-sizes-title-lg"));
-        assertTrue(confirmationMessage.isDisplayed(), "Confirmation message is not displayed!");
+        WebElement submitButton = driver.findElement(By.id("submit"));
+        assertTrue(submitButton.isDisplayed(), "Submit button is not visible!");
     }
 
     @AfterEach
@@ -37,4 +32,3 @@ public class FormSubmissionTest {
         }
     }
 }
-
